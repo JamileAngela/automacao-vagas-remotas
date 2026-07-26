@@ -13,6 +13,6 @@ jobs:
       - name: Baixar código
         uses: actions/checkout@v4
 
-      - name: Teste inicial
+      - name: Executar Python
         run: |
-          echo "Automação de vagas funcionando!"
+          python main.py
