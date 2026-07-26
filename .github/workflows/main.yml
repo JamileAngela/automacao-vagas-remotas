@@ -1,0 +1,18 @@
+name: Automação de vagas
+
+on:
+  workflow_dispatch:
+
+jobs:
+  teste-automacao:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Baixar código
+        uses: actions/checkout@v4
+
+      - name: Teste inicial
+        run: |
+          echo "Automação de vagas funcionando!"
