@@ -1,59 +1,39 @@
 from fontes.adzuna import buscar_vagas
-from classificador import classificar_vaga
 
 
-print("🔎 Buscando oportunidades reais...\n")
+print("🔎 Buscando oportunidades...\n")
 
 
-try:
-
-    vagas = buscar_vagas()
-
-    print(f"{len(vagas)} vagas recebidas\n")
-
-
-    for vaga in vagas:
-
-        titulo = vaga.get("title", "Sem título")
-        empresa = vaga.get("company", {}).get("display_name", "Empresa não informada")
-        descricao = vaga.get("description", "")
-        link = vaga.get("redirect_url", "")
+buscas = [
+    "logística remoto",
+    "customer service remoto",
+    "suporte remoto",
+    "python remoto",
+    "java remoto",
+    "inteligência artificial remoto",
+    "edição vídeo remoto"
+]
 
 
-        vaga_formatada = {
-            "titulo": titulo,
-            "descricao": descricao
-        }
+todas_vagas = []
 
 
-        perfis = classificar_vaga(vaga_formatada)
+for busca in buscas:
+
+    print("Buscando:", busca)
+
+    vagas = buscar_vagas(busca)
+
+    todas_vagas.extend(vagas)
 
 
-        print("----------------------------")
-        print("Título:", titulo)
-        print("Empresa:", empresa)
+
+print("\nTotal encontrado:", len(todas_vagas))
 
 
-        if perfis:
+for vaga in todas_vagas[:20]:
 
-            print("Perfis compatíveis:")
-
-            for perfil in perfis:
-                print(
-                    "-",
-                    perfil["perfil"],
-                    "| Pontos:",
-                    perfil["pontuacao"]
-                )
-
-        else:
-
-            print("Sem perfil identificado")
-
-
-        print("Link:", link)
-
-
-except Exception as erro:
-
-    print("Erro:", erro)
+    print("----------------------------")
+    print("Título:", vaga.get("title"))
+    print("Empresa:", vaga.get("company", {}).get("display_name"))
+    print("Link:", vaga.get("redirect_url"))
