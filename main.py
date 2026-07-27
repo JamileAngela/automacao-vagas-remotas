@@ -1,5 +1,6 @@
 from limpeza import remover_duplicadas
 from fontes.adzuna import buscar_vagas
+from classificador import classificar_vaga
 
 
 print("🔎 Buscando oportunidades...\n")
