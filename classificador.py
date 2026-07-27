@@ -19,7 +19,7 @@ def classificar_vaga(vaga):
             if palavra.lower() in texto:
                 pontos += 1
 
-        if pontos > 0:
+        if pontos >= 2:
             resultados.append({
                 "perfil": perfil,
                 "pontuacao": pontos
