@@ -1,30 +1,23 @@
-import requests
+from fontes.adzuna import buscar_vagas
 
-print("🔎 Buscando oportunidades reais...")
 
-url = "https://www.arbeitnow.com/api/job-board-api"
+print("🔎 Testando Adzuna API...")
+
 
 try:
-    resposta = requests.get(url, timeout=30)
-    resposta.raise_for_status()
+    vagas = buscar_vagas()
 
-    dados = resposta.json()
-    vagas = dados["data"][:10]  # Primeiras 10 vagas
+    print(f"\n{len(vagas)} vagas encontradas\n")
 
-    print(f"\n{len(vagas)} oportunidades encontradas:\n")
 
     for vaga in vagas:
 
-        titulo = vaga.get("title", "Sem título")
-        empresa = vaga.get("company_name", "Empresa não informada")
-        remoto = "Remoto" if vaga.get("remote", False) else "Não remoto"
-        link = vaga.get("url", "")
-
         print("----------------------------")
-        print("Título:", titulo)
-        print("Empresa:", empresa)
-        print("Modelo:", remoto)
-        print("Link:", link)
+        print("Título:", vaga.get("title"))
+        print("Empresa:", vaga.get("company", "Não informado"))
+        print("Local:", vaga.get("location", {}).get("display_name"))
+        print("Link:", vaga.get("redirect_url"))
 
 except Exception as erro:
+
     print("Erro:", erro)
