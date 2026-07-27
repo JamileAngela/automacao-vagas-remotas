@@ -1,3 +1,4 @@
+from limpeza import remover_duplicadas
 from fontes.adzuna import buscar_vagas
 
 
@@ -26,6 +27,10 @@ for busca in buscas:
 
     todas_vagas.extend(vagas)
 
+
+
+# Agora sim remove duplicadas
+todas_vagas = remover_duplicadas(todas_vagas)
 
 
 print("\nTotal encontrado:", len(todas_vagas))
