@@ -10,7 +10,7 @@ def buscar_vagas():
     parametros = {
         "app_id": ADZUNA_APP_ID,
         "app_key": ADZUNA_APP_KEY,
-        "results_per_page": 10,
+        "results_per_page": 50,
         "what": "home office"
     }
 
