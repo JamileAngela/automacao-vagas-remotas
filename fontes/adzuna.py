@@ -3,7 +3,7 @@ import requests
 from config import ADZUNA_APP_ID, ADZUNA_APP_KEY
 
 
-def buscar_vagas():
+def buscar_vagas(termo):
 
     url = "https://api.adzuna.com/v1/api/jobs/br/search/1"
 
@@ -11,7 +11,7 @@ def buscar_vagas():
         "app_id": ADZUNA_APP_ID,
         "app_key": ADZUNA_APP_KEY,
         "results_per_page": 50,
-        "what": "home office"
+        "what": termo
     }
 
     resposta = requests.get(
