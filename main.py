@@ -1,22 +1,58 @@
 from fontes.adzuna import buscar_vagas
+from classificador import classificar_vaga
 
 
-print("🔎 Testando Adzuna API...")
+print("🔎 Buscando oportunidades reais...\n")
 
 
 try:
+
     vagas = buscar_vagas()
 
-    print(f"\n{len(vagas)} vagas encontradas\n")
+    print(f"{len(vagas)} vagas recebidas\n")
 
 
     for vaga in vagas:
 
+        titulo = vaga.get("title", "Sem título")
+        empresa = vaga.get("company", {}).get("display_name", "Empresa não informada")
+        descricao = vaga.get("description", "")
+        link = vaga.get("redirect_url", "")
+
+
+        vaga_formatada = {
+            "titulo": titulo,
+            "descricao": descricao
+        }
+
+
+        perfis = classificar_vaga(vaga_formatada)
+
+
         print("----------------------------")
-        print("Título:", vaga.get("title"))
-        print("Empresa:", vaga.get("company", "Não informado"))
-        print("Local:", vaga.get("location", {}).get("display_name"))
-        print("Link:", vaga.get("redirect_url"))
+        print("Título:", titulo)
+        print("Empresa:", empresa)
+
+
+        if perfis:
+
+            print("Perfis compatíveis:")
+
+            for perfil in perfis:
+                print(
+                    "-",
+                    perfil["perfil"],
+                    "| Pontos:",
+                    perfil["pontuacao"]
+                )
+
+        else:
+
+            print("Sem perfil identificado")
+
+
+        print("Link:", link)
+
 
 except Exception as erro:
 
