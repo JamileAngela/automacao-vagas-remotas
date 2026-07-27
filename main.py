@@ -38,7 +38,35 @@ print("\nTotal encontrado:", len(todas_vagas))
 
 for vaga in todas_vagas[:20]:
 
+    titulo = vaga.get("title", "")
+    descricao = vaga.get("description", "")
+
+    resultado = classificar_vaga({
+        "titulo": titulo,
+        "descricao": descricao
+    })
+
+
     print("----------------------------")
-    print("Título:", vaga.get("title"))
+    print("Título:", titulo)
     print("Empresa:", vaga.get("company", {}).get("display_name"))
+
+
+    if resultado:
+
+        print("Compatibilidade:")
+
+        for perfil in resultado:
+            print(
+                "-",
+                perfil["perfil"],
+                "| Pontos:",
+                perfil["pontuacao"]
+            )
+
+    else:
+
+        print("Sem perfil identificado")
+
+
     print("Link:", vaga.get("redirect_url"))
