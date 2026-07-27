@@ -1,43 +1,50 @@
 PERFIS = {
 
     "Logística + Operações + Atendimento": {
-        "peso_alto": [
+
+        "alto": [
             "logística",
-            "transporte",
+            "transport",
             "supply chain",
-            "customer service"
+            "customer service",
+            "sla"
         ],
 
-        "peso_medio": [
-            "sla",
-            "monitoramento",
-            "frota",
-            "roteirização"
-        ],
-
-        "peso_baixo": [
-            "remoto",
+        "medio": [
             "atendimento",
-            "suporte"
+            "suporte",
+            "help desk",
+            "sac",
+            "backoffice"
+        ],
+
+        "baixo": [
+            "administrativo",
+            "operações",
+            "remoto"
         ]
     },
 
 
     "Tecnologia Inicial": {
-        "peso_alto": [
+
+        "alto": [
             "python",
             "java",
-            "programação",
-            "automação"
+            "programador",
+            "developer",
+            "automação",
+            "api"
         ],
 
-        "peso_medio": [
-            "suporte técnico",
-            "sistemas",
-            "erp"
+        "medio": [
+            "software",
+            "qa",
+            "teste",
+            "suporte técnico"
         ],
 
-        "peso_baixo": [
+        "baixo": [
             "tecnologia",
             "remoto"
         ]
@@ -45,22 +52,25 @@ PERFIS = {
 
 
     "IA + Criativo + Autônomo": {
-        "peso_alto": [
+
+        "alto": [
             "inteligência artificial",
-            "machine learning",
-            "automação com ia"
+            "prompt",
+            "motion",
+            "capcut"
         ],
 
-        "peso_medio": [
-            "edição de vídeo",
+        "medio": [
+            "vídeo",
+            "edição",
             "design",
-            "criativo"
+            "conteúdo"
         ],
 
-        "peso_baixo": [
-            "freela",
-            "remoto",
-            "digital"
+        "baixo": [
+            "criativo",
+            "ai",
+            "remoto"
         ]
     }
 }
