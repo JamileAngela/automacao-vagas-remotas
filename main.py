@@ -1,80 +1,30 @@
-print("Robô de oportunidades iniciado!")
+import requests
 
+print("🔎 Buscando oportunidades reais...")
 
-perfis = {
+url = "https://www.arbeitnow.com/api/job-board-api"
 
-    "Logística + Operações + Atendimento": [
-        "logística",
-        "transportes",
-        "SLA",
-        "customer service",
-        "atendimento",
-        "suporte",
-        "helpdesk",
-        "operações",
-        "administrativo transporte"
-    ],
+try:
+    resposta = requests.get(url, timeout=30)
+    resposta.raise_for_status()
 
-    "Tecnologia Inicial": [
-        "Python",
-        "Java",
-        "programação",
-        "automação",
-        "API",
-        "dados",
-        "sistemas",
-        "software",
-        "suporte técnico"
-    ],
+    dados = resposta.json()
+    vagas = dados["data"][:10]  # Primeiras 10 vagas
 
-    "IA + Criativo + Autônomo": [
-        "inteligência artificial",
-        "edição de vídeo",
-        "CapCut",
-        "design",
-        "animação",
-        "conteúdo digital"
-    ]
+    print(f"\n{len(vagas)} oportunidades encontradas:\n")
 
-}
+    for vaga in vagas:
 
+        titulo = vaga.get("title", "Sem título")
+        empresa = vaga.get("company_name", "Empresa não informada")
+        remoto = "Remoto" if vaga.get("remote", False) else "Não remoto"
+        link = vaga.get("url", "")
 
-oportunidades = [
+        print("----------------------------")
+        print("Título:", titulo)
+        print("Empresa:", empresa)
+        print("Modelo:", remoto)
+        print("Link:", link)
 
-    {
-        "tipo": "vaga",
-        "titulo": "Analista de Customer Service Logístico",
-        "empresa": "Empresa Exemplo",
-        "modelo": "Remoto",
-        "perfil": "Logística + Operações + Atendimento",
-        "link": "https://exemplo.com"
-    },
-
-    {
-        "tipo": "freela",
-        "titulo": "Edição de vídeos curtos com IA",
-        "empresa": "Cliente Exemplo",
-        "modelo": "Online",
-        "perfil": "IA + Criativo + Autônomo",
-        "link": "https://exemplo.com"
-    }
-
-]
-
-
-print("\nPerfis cadastrados:")
-
-for perfil in perfis:
-    print("-", perfil)
-
-
-print("\nOportunidades encontradas:")
-
-for oportunidade in oportunidades:
-    print("--------------------")
-    print("Tipo:", oportunidade["tipo"])
-    print("Título:", oportunidade["titulo"])
-    print("Empresa:", oportunidade["empresa"])
-    print("Modelo:", oportunidade["modelo"])
-    print("Perfil:", oportunidade["perfil"])
-    print("Link:", oportunidade["link"])
+except Exception as erro:
+    print("Erro:", erro)
