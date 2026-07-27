@@ -9,20 +9,39 @@ def classificar_vaga(vaga):
         vaga.get("descricao", "")
     ).lower()
 
+
     resultados = []
 
-    for perfil, palavras in PERFIS.items():
+
+    for perfil, grupos in PERFIS.items():
 
         pontos = 0
 
-        for palavra in palavras:
+
+        for palavra in grupos["peso_alto"]:
+            if palavra.lower() in texto:
+                pontos += 3
+
+
+        for palavra in grupos["peso_medio"]:
+            if palavra.lower() in texto:
+                pontos += 2
+
+
+        for palavra in grupos["peso_baixo"]:
             if palavra.lower() in texto:
                 pontos += 1
 
-        if pontos >= 2:
+
+        if pontos > 0:
             resultados.append({
                 "perfil": perfil,
                 "pontuacao": pontos
             })
 
-    return resultados
+
+    return sorted(
+        resultados,
+        key=lambda x: x["pontuacao"],
+        reverse=True
+    )
