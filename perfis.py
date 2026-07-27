@@ -1,41 +1,66 @@
 PERFIS = {
-    "Logística + Operações + Atendimento": [
-        "logística",
-        "transport",
-        "customer service",
-        "atendimento",
-        "suporte",
-        "help desk",
-        "sac",
-        "administrativo",
-        "supply chain",
-        "sla",
-        "backoffice"
-    ],
 
-    "Tecnologia Inicial": [
-        "python",
-        "java",
-        "developer",
-        "programador",
-        "software",
-        "qa",
-        "teste",
-        "automação",
-        "api",
-        "suporte técnico"
-    ],
+    "Logística + Operações + Atendimento": {
+        "peso_alto": [
+            "logística",
+            "transporte",
+            "supply chain",
+            "customer service"
+        ],
 
-    "IA + Criativo + Autônomo": [
-        "inteligência artificial",
-        "ai",
-        "prompt",
-        "vídeo",
-        "edição",
-        "design",
-        "criativo",
-        "capcut",
-        "motion",
-        "conteúdo"
-    ]
+        "peso_medio": [
+            "sla",
+            "monitoramento",
+            "frota",
+            "roteirização"
+        ],
+
+        "peso_baixo": [
+            "remoto",
+            "atendimento",
+            "suporte"
+        ]
+    },
+
+
+    "Tecnologia Inicial": {
+        "peso_alto": [
+            "python",
+            "java",
+            "programação",
+            "automação"
+        ],
+
+        "peso_medio": [
+            "suporte técnico",
+            "sistemas",
+            "erp"
+        ],
+
+        "peso_baixo": [
+            "tecnologia",
+            "remoto"
+        ]
+    },
+
+
+    "IA + Criativo + Autônomo": {
+        "peso_alto": [
+            "inteligência artificial",
+            "machine learning",
+            "automação com ia"
+        ],
+
+        "peso_medio": [
+            "edição de vídeo",
+            "design",
+            "criativo"
+        ],
+
+        "peso_baixo": [
+            "freela",
+            "remoto",
+            "digital"
+        ]
+    }
 }
