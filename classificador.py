@@ -18,17 +18,17 @@ def classificar_vaga(vaga):
         pontos = 0
 
 
-        for palavra in grupos["peso_alto"]:
+        for palavra in grupos["alto"]:
             if palavra.lower() in texto:
                 pontos += 3
 
 
-        for palavra in grupos["peso_medio"]:
+        for palavra in grupos["medio"]:
             if palavra.lower() in texto:
                 pontos += 2
 
 
-        for palavra in grupos["peso_baixo"]:
+        for palavra in grupos["baixo"]:
             if palavra.lower() in texto:
                 pontos += 1
 
